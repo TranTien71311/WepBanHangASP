@@ -1,0 +1,52 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model  UserModel
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <title>Login</title>
+    <!-- Meta tag Keywords -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+
+    <!-- //Meta tag Keywords -->
+</head>
+
+<body>
+    <section class="w3l-forms-main-61">
+        <div class="form-inner">
+            <div class="wrapper">
+
+                <div class="form-bg-blur">
+                    <div class="form-61">
+
+                        <form>
+
+                            <div class="">
+                                <p class="text-head">Tài Khoản : </p>
+                                <input type="text" asp-for="email" value="admin@gmail.com" class="input" required />
+                            </div>
+                            <div class="">
+                                <p class="text-head">Mật Khẩu : </p>
+                                <input type="password" asp-for="password" value="12345" class="input" required />
+                            </div>
+                            <label class="remember">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>Nhớ Mật Khẩu
+                            </label>
+                            <button type="submit" class="signinbutton btn"asp-action="Login">Đăng Nhập</button>
+                            <p class="signup">Quên Mật Khẩu?<a href="#forgot" class="signuplink">Lấy Lại</a></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</body>
+
+</html>

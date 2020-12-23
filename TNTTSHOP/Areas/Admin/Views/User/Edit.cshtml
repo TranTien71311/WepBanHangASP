@@ -1,0 +1,96 @@
+﻿@model TNTTSHOP.Areas.Admin.Models.UserModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<style>
+
+    label {
+        color: #fff;
+    }
+</style>
+
+<h4>Sửa Thông Tin Nhân Viên</h4>
+<hr />
+<div class="row">
+    <div class="col-md">
+        <form asp-action="Edit"enctype="multipart/form-data"method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="maUser" />
+            <div class="input-group mg-b-pro-edt">
+                <span class="input-group-addon"><i class="fa fa-image" aria-hidden="true"></i></span>
+                <input class="form-control" data-toggle="dropdown" value="Ảnh Đại Diện" type="submit">
+                <ul class="dropdown-header-top author-log dropdown-menu animated zoomIn">
+                    <input type="file" class="form-control" name="ful" id="ful" />
+                    <img id="imgPre" src="~/img/@Model.image" alt="Không Có Ảnh" class="img-thumbnail" />
+                    <input asp-for="image" class="form-control"type="hidden" />
+                </ul>
+            </div>
+            <div class="form-group">
+                <label asp-for="name" class="control-label"></label>
+                <input asp-for="name" class="form-control" />
+                <span asp-validation-for="name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="email" class="control-label"></label>
+                <input asp-for="email" class="form-control" />
+                <span asp-validation-for="email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="password" class="control-label"></label>
+                <input asp-for="password" class="form-control" />
+                <span asp-validation-for="password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="sdt" class="control-label"></label>
+                <input asp-for="sdt" class="form-control" />
+                <span asp-validation-for="sdt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="address" class="control-label"></label>
+                <input asp-for="address" class="form-control" />
+                <span asp-validation-for="address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="position" class="control-label"></label>
+                <input asp-for="position" class="form-control" />
+                <span asp-validation-for="position" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Trạng Thái</label>
+                <select class="form-control pro-edt-select form-control-primary" asp-for="status">
+                    <option value="1">Trạng Thái: Kích Hoạt</option>
+                    <option value="0">Trạng Thái: Tạm Khóa</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Lưu Thay Đổi" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Trở Về</a>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+<script>
+    function readURL(input, idImg) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $(idImg).attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]); // convert to base64 string
+        }
+    }
+
+    $("#ful").change(function () {
+        readURL(this, '#imgPre');
+    });
+</script>
+}

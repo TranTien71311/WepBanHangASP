@@ -1,0 +1,73 @@
+﻿@model IEnumerable<TNTTSHOP.Areas.Admin.Models.UserModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<style>
+
+    tr {
+        color: #fff;
+        text-align: left;
+    }
+</style>
+
+<h4>Danh Sách Nhân Viên</h4>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Ảnh
+            </th>
+            <th>
+               Tên
+            </th>
+            <th>
+                Số Điện Thoại
+            </th>
+            <th>
+                Chức Vụ
+            </th>
+            <th>
+               Trạng Thái
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <img src="~/img/@Html.DisplayFor(modelItem => item.image)?@ViewData["rand"];"style="width:80px;height:80px" /> 
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sdt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.position)
+            </td>
+            <td>
+                @if (item.status == 1)
+                {
+                <a class="btn btn-success" data-original-title="Hoạt Động" data-toggle="tooltip"><i class="fa fa-unlock-alt"></i></a>
+                }
+                else if (item.status == 0)
+                {
+            <a class="btn btn-warning" data-original-title="Tạm Khóa" data-toggle="tooltip"><i class="fa fa-lock"></i></a>
+                }
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.maUser">Sửa</a> |
+                <a asp-action="Details" asp-route-id="@item.maUser">Chi Tiết</a> |
+                <a asp-action="Delete" asp-route-id="@item.maUser">Xóa</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<div>
+    <a asp-action="Create">Thêm Mới</a>
+</div>

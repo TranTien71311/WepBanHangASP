@@ -1,0 +1,37 @@
+﻿@model TNTTSHOP.Areas.Admin.Models.CategoryModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <ul id="myTab3" class="tab-review-design">
+                <li class="active"><a href="#description"><i class="icon nalika-edit" aria-hidden="true"></i>Chi Tiết</a></li>
+            </ul>
+            <div class="single-product-pr">
+                <div class="row">
+
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                        <div id="myTabContent1" class="tab-content">
+                            <div class="product-tab-list tab-pane fade active in" id="single-tab1">
+                                <img src="~/img/@Html.DisplayFor(model => model.image)" style=" width:500px;height:400px" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+                        <div class="single-product-details res-pro-tb">
+                            <h1>Tên: @Html.DisplayFor(model => model.name)</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<form asp-action="Delete">
+    <input type="hidden" asp-for="MaCate" />
+    <input type="submit" value="Xóa" class="btn btn-default" /> |
+    <a asp-action="Index">Trở Về</a>
+</form>
